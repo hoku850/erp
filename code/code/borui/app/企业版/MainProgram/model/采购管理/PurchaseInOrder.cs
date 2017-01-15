@@ -499,6 +499,11 @@ namespace MainProgram.model
 
         public PurchaseInOrderTable getPurchaseInfoFromBillNumber(string billNumber)
         {
+            if (m_tableDataList.Count == 0)
+            {
+                load();
+            }
+
             PurchaseInOrderTable record = new PurchaseInOrderTable();
 
             foreach (KeyValuePair<int, PurchaseInOrderTable> index in m_tableDataList)

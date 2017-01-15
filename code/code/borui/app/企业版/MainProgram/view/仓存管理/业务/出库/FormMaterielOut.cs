@@ -328,6 +328,9 @@ namespace MainProgram
             record.billNumber = this.labelBillNumber.Text;
             record.exchangesUnit = this.labelSummary.Text;
 
+            record.projectNo = this.labelProjectNo.Text;
+            record.makeNo = this.labelMakeNo.Text;
+
             record.sumValue = this.dataGridViewDataCount.Rows[0].Cells[(int)DataGridColumnName.Value].Value.ToString();
             record.sumMoney = this.dataGridViewDataCount.Rows[0].Cells[(int)DataGridColumnName.Turnover].Value.ToString();
 
@@ -635,6 +638,8 @@ namespace MainProgram
             this.labelSave.Visible = true;
             this.labelVerify.Visible = true;
             this.labelSummary.Visible = true;
+            this.labelProjectNo.Visible = true;
+            this.labelMakeNo.Visible = true;
             
             this.labelSaleName.Text = m_materieOutOrder.departmentName;
             this.labelTradingDate.Text = m_materieOutOrder.tradingDate;
@@ -643,6 +648,9 @@ namespace MainProgram
             this.labelSave.Text = m_materieOutOrder.staffSaveName;
             this.labelVerify.Text = m_materieOutOrder.materielOutStaffName;
             this.labelSummary.Text = m_materieOutOrder.exchangesUnit;
+
+            this.labelProjectNo.Text = m_materieOutOrder.projectNo;
+            this.labelMakeNo.Text = m_materieOutOrder.makeNo;
 
             // DataGridView 赋值
             writeBillDetailsInfoFromBillNumber(m_billNumber);
@@ -747,5 +755,45 @@ namespace MainProgram
                 }
             }
         }
+
+        private void textBoxProjectNo_Click(object sender, EventArgs e)
+        {
+            if (m_materieOutOrder.isReview == "1")
+            {
+                return;
+            }
+
+            this.labelProjectNo.Visible = false;
+            this.textBoxProjectNo.Visible = true;
+            this.textBoxProjectNo.Focus();
+        }
+
+        private void textBoxProjectNo_Leave(object sender, EventArgs e)
+        {
+            this.textBoxProjectNo.Visible = false;
+            this.labelProjectNo.Visible = true;
+            this.labelProjectNo.Text = this.textBoxProjectNo.Text;
+            this.textBoxProjectNo.Text = "";
+        }
+
+        private void textBoxMakeNo_Click(object sender, EventArgs e)
+        {
+            if (m_materieOutOrder.isReview == "1")
+            {
+                return;
+            }
+            this.labelMakeNo.Visible = false;
+            this.textBoxMakeNo.Visible = true;
+            this.textBoxMakeNo.Focus();
+        }
+
+        private void textBoxMakeNo_Leave(object sender, EventArgs e)
+        {
+            this.textBoxMakeNo.Visible = false;
+            this.labelMakeNo.Visible = true;
+            this.labelMakeNo.Text = this.textBoxMakeNo.Text;
+            this.textBoxMakeNo.Text = "";
+        }
+
     }
 }
