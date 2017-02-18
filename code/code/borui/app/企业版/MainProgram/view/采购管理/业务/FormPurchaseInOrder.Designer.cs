@@ -137,6 +137,8 @@
             this.panelSummary = new System.Windows.Forms.Panel();
             this.panelPaymentDate = new System.Windows.Forms.Panel();
             this.panelTradingDate = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBoxContractNum = new System.Windows.Forms.TextBox();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -332,8 +334,8 @@
             // 
             // dataGridViewDataList
             // 
-            this.dataGridViewDataList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewDataList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewDataList.Location = new System.Drawing.Point(12, 202);
             this.dataGridViewDataList.Name = "dataGridViewDataList";
@@ -461,9 +463,9 @@
             // 
             this.groupBox9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.groupBox9.BackColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox9.Location = new System.Drawing.Point(99, 179);
+            this.groupBox9.Location = new System.Drawing.Point(358, 179);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(595, 1);
+            this.groupBox9.Size = new System.Drawing.Size(337, 1);
             this.groupBox9.TabIndex = 41;
             this.groupBox9.TabStop = false;
             // 
@@ -472,9 +474,9 @@
             this.panel10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel10.Controls.Add(this.labelSummary);
             this.panel10.Controls.Add(this.textBoxSummary);
-            this.panel10.Location = new System.Drawing.Point(97, 159);
+            this.panel10.Location = new System.Drawing.Point(356, 159);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(600, 21);
+            this.panel10.Size = new System.Drawing.Size(342, 21);
             this.panel10.TabIndex = 40;
             this.panel10.Click += new System.EventHandler(this.panelSummary_Click);
             // 
@@ -568,7 +570,7 @@
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label18.Location = new System.Drawing.Point(18, 164);
+            this.label18.Location = new System.Drawing.Point(299, 162);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(35, 12);
             this.label18.TabIndex = 37;
@@ -1275,7 +1277,7 @@
             this.panelSummary.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panelSummary.BackgroundImage = global::MainProgram.Properties.Resources.Preview_16_;
             this.panelSummary.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panelSummary.Location = new System.Drawing.Point(678, 158);
+            this.panelSummary.Location = new System.Drawing.Point(677, 158);
             this.panelSummary.Name = "panelSummary";
             this.panelSummary.Size = new System.Drawing.Size(21, 21);
             this.panelSummary.TabIndex = 42;
@@ -1303,12 +1305,33 @@
             this.panelTradingDate.TabIndex = 21;
             this.panelTradingDate.Click += new System.EventHandler(this.panelDateTime_Click);
             // 
+            // label11
+            // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label11.Location = new System.Drawing.Point(18, 162);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(59, 12);
+            this.label11.TabIndex = 96;
+            this.label11.Text = "合同编号:";
+            // 
+            // textBoxContractNum
+            // 
+            this.textBoxContractNum.Location = new System.Drawing.Point(96, 158);
+            this.textBoxContractNum.Name = "textBoxContractNum";
+            this.textBoxContractNum.Size = new System.Drawing.Size(165, 21);
+            this.textBoxContractNum.TabIndex = 97;
+            // 
             // FormPurchaseInOrder
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(241)))), ((int)(((byte)(246)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1126, 562);
+            this.Controls.Add(this.textBoxContractNum);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.panelInLedger);
             this.Controls.Add(this.panelRed);
             this.Controls.Add(this.groupBox20);
@@ -1519,6 +1542,8 @@
         private System.Windows.Forms.Panel panelRed;
         private System.Windows.Forms.Panel panelInLedger;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBoxContractNum;
 
     }
 }

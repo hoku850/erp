@@ -38,6 +38,7 @@ namespace MainProgram
             MatetielNumber,
             MatetielName,
             Model,
+            Brand,
             Unit,
             Price,
             Value,
@@ -105,8 +106,9 @@ namespace MainProgram
             {
                 m_dateGridVeiwListDataList.addDataGridViewColumn("物料名称", 161, true, true);
             }
-            m_dateGridVeiwListDataList.addDataGridViewColumn("型号", 83, true, true);
-            m_dateGridVeiwListDataList.addDataGridViewColumn("基本单位", 100, true, true);
+            m_dateGridVeiwListDataList.addDataGridViewColumn("型号", 63, true, true);
+            m_dateGridVeiwListDataList.addDataGridViewColumn("品牌", 60, true, true);
+            m_dateGridVeiwListDataList.addDataGridViewColumn("单位", 60, true, true);
             m_dateGridVeiwListDataList.addDataGridViewColumn("单价(*)", 100, true, false);
             m_dateGridVeiwListDataList.addDataGridViewColumn("数量(*)", 100, true, false);
             m_dateGridVeiwListDataList.addDataGridViewColumn("金额", 100, true, true);
@@ -521,6 +523,7 @@ namespace MainProgram
             record.exchangesUnit = this.labelSummary.Text;
             record.sourceBillType = this.labelSourceOrderType.Text;
             record.sourceBillNumber = this.labelSourceOrderNumber.Text;
+            record.contractNum = this.textBoxContractNum.Text;
 
             record.sumValue = this.dataGridViewDataCount.Rows[0].Cells[(int)DataGridColumnName.Value].Value.ToString();
             record.sumMoney = this.dataGridViewDataCount.Rows[0].Cells[(int)DataGridColumnName.Turnover].Value.ToString();
@@ -790,6 +793,7 @@ namespace MainProgram
             {
                 dataGridViewDataList.Rows[m_rowIndex].Cells[(int)DataGridColumnName.MatetielName].Value = record.name;
                 dataGridViewDataList.Rows[m_rowIndex].Cells[(int)DataGridColumnName.Model].Value = record.model;
+                dataGridViewDataList.Rows[m_rowIndex].Cells[(int)DataGridColumnName.Brand].Value = record.brand;
                 dataGridViewDataList.Rows[m_rowIndex].Cells[(int)DataGridColumnName.Unit].Value =
                     AuxiliaryMaterial.getInctance().getAuxiliaryMaterialNameFromPkey("BASE_UNIT_LIST", record.unitPurchase);
                 dataGridViewDataList.Rows[m_rowIndex].Cells[(int)DataGridColumnName.Price].Value = "0";
@@ -950,6 +954,7 @@ namespace MainProgram
             this.labelPurchaseName.Text = m_purchaseInOrder.supplierName;
             this.labelTradingDate.Text = m_purchaseInOrder.tradingDate;
             this.labelBillNumber.Text = m_purchaseInOrder.billNumber;
+            this.textBoxContractNum.Text = m_purchaseInOrder.contractNum;
             this.labelPurchaseType.Text = m_purchaseInOrder.purchaseType;
             this.labelPaymentDate.Text = m_purchaseInOrder.paymentDate;
             this.labelSummary.Text = m_purchaseInOrder.exchangesUnit;
@@ -977,6 +982,7 @@ namespace MainProgram
                 dataGridViewDataList.Rows[rowIndex].Cells[(int)DataGridColumnName.MatetielNumber].Value = record.materielID;
                 dataGridViewDataList.Rows[rowIndex].Cells[(int)DataGridColumnName.MatetielName].Value = record.materielName;
                 dataGridViewDataList.Rows[rowIndex].Cells[(int)DataGridColumnName.Model].Value = record.materielModel;
+                dataGridViewDataList.Rows[rowIndex].Cells[(int)DataGridColumnName.Brand].Value = record.brand;
                 dataGridViewDataList.Rows[rowIndex].Cells[(int)DataGridColumnName.Unit].Value = record.materielUnitPurchase;
                 dataGridViewDataList.Rows[rowIndex].Cells[(int)DataGridColumnName.Price].Value = record.price;
                 dataGridViewDataList.Rows[rowIndex].Cells[(int)DataGridColumnName.Value].Value = record.value;
@@ -1028,6 +1034,8 @@ namespace MainProgram
                 this.registerInLedger.Enabled = false;
                 this.dataGridViewDataList.ReadOnly = true;
                 this.dataGridViewDataCount.ReadOnly = true;
+
+                this.textBoxContractNum.Enabled = false;
             }
             else
             {
@@ -1059,6 +1067,7 @@ namespace MainProgram
                 dataGridViewDataList.Rows[rowIndex].Cells[(int)DataGridColumnName.MatetielNumber].Value = record.materielID;
                 dataGridViewDataList.Rows[rowIndex].Cells[(int)DataGridColumnName.MatetielName].Value = record.materielName;
                 dataGridViewDataList.Rows[rowIndex].Cells[(int)DataGridColumnName.Model].Value = record.materielModel;
+                dataGridViewDataList.Rows[rowIndex].Cells[(int)DataGridColumnName.Brand].Value = record.brand;
                 dataGridViewDataList.Rows[rowIndex].Cells[(int)DataGridColumnName.Unit].Value = record.materielUnitPurchase;
                 dataGridViewDataList.Rows[rowIndex].Cells[(int)DataGridColumnName.Price].Value = record.price;
                 dataGridViewDataList.Rows[rowIndex].Cells[(int)DataGridColumnName.Value].Value = record.value;

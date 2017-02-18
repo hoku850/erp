@@ -51,6 +51,7 @@ namespace MainProgram
             m_dataGridViewExtend.addDataGridViewColumn("物料简称", 100);
             m_dataGridViewExtend.addDataGridViewColumn("助记码", 100);
             m_dataGridViewExtend.addDataGridViewColumn("规格型号", 100);
+            m_dataGridViewExtend.addDataGridViewColumn("品牌", 60);
             m_dataGridViewExtend.addDataGridViewColumn("收料仓库", 100);
             m_dataGridViewExtend.addDataGridViewColumn("物料属性", 100);
             m_dataGridViewExtend.addDataGridViewColumn("计价方式", 100);
@@ -96,6 +97,7 @@ namespace MainProgram
                 temp.Add(materiel.nameShort);
                 temp.Add(materiel.mnemonicCode);
                 temp.Add(materiel.model);
+                temp.Add(materiel.brand);
 
                 temp.Add(AuxiliaryMaterial.getInctance().getAuxiliaryMaterialNameFromPkey("BASE_STORAGE_LIST", materiel.storage));
                 temp.Add(AuxiliaryMaterial.getInctance().getAuxiliaryMaterialNameFromPkey("BASE_MATERIEL_ATTRIBUTE", materiel.materielAttribute));
