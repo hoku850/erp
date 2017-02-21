@@ -291,8 +291,8 @@ namespace MainProgram
                         temp.Add(record.supplierName);
                         temp.Add(record.tradingDate);
                         temp.Add(record.billNumber);
-                        temp.Add(record.contractNum);
                         temp.Add(record.purchaseType);
+                        temp.Add(record.contractNum);
                         temp.Add(record.paymentDate);
                         temp.Add(record.sourceBillNumber);
                         temp.Add(record.sumMoney);

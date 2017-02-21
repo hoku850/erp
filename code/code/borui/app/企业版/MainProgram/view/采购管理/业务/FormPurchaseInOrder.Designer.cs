@@ -138,6 +138,9 @@
             this.panelPaymentDate = new System.Windows.Forms.Panel();
             this.panelTradingDate = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
+            this.groupBox22 = new System.Windows.Forms.GroupBox();
+            this.panelContractNum = new System.Windows.Forms.Panel();
+            this.labelContractNum = new System.Windows.Forms.Label();
             this.textBoxContractNum = new System.Windows.Forms.TextBox();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -159,6 +162,7 @@
             this.panelStaffVerify.SuspendLayout();
             this.groupBox18.SuspendLayout();
             this.groupBox20.SuspendLayout();
+            this.panelContractNum.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelBillNumber
@@ -334,8 +338,8 @@
             // 
             // dataGridViewDataList
             // 
-            this.dataGridViewDataList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewDataList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewDataList.Location = new System.Drawing.Point(12, 202);
             this.dataGridViewDataList.Name = "dataGridViewDataList";
@@ -463,9 +467,9 @@
             // 
             this.groupBox9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.groupBox9.BackColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox9.Location = new System.Drawing.Point(358, 179);
+            this.groupBox9.Location = new System.Drawing.Point(530, 179);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(337, 1);
+            this.groupBox9.Size = new System.Drawing.Size(165, 1);
             this.groupBox9.TabIndex = 41;
             this.groupBox9.TabStop = false;
             // 
@@ -474,9 +478,9 @@
             this.panel10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel10.Controls.Add(this.labelSummary);
             this.panel10.Controls.Add(this.textBoxSummary);
-            this.panel10.Location = new System.Drawing.Point(356, 159);
+            this.panel10.Location = new System.Drawing.Point(530, 159);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(342, 21);
+            this.panel10.Size = new System.Drawing.Size(168, 21);
             this.panel10.TabIndex = 40;
             this.panel10.Click += new System.EventHandler(this.panelSummary_Click);
             // 
@@ -494,9 +498,9 @@
             // 
             this.textBoxSummary.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBoxSummary.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxSummary.Location = new System.Drawing.Point(2, 0);
+            this.textBoxSummary.Location = new System.Drawing.Point(0, 0);
             this.textBoxSummary.Name = "textBoxSummary";
-            this.textBoxSummary.Size = new System.Drawing.Size(597, 21);
+            this.textBoxSummary.Size = new System.Drawing.Size(169, 21);
             this.textBoxSummary.TabIndex = 43;
             this.textBoxSummary.Visible = false;
             this.textBoxSummary.Click += new System.EventHandler(this.panelSummary_Click);
@@ -570,7 +574,7 @@
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label18.Location = new System.Drawing.Point(299, 162);
+            this.label18.Location = new System.Drawing.Point(446, 167);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(35, 12);
             this.label18.TabIndex = 37;
@@ -1311,18 +1315,54 @@
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label11.Location = new System.Drawing.Point(18, 162);
+            this.label11.Location = new System.Drawing.Point(18, 167);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(59, 12);
             this.label11.TabIndex = 96;
             this.label11.Text = "合同编号:";
             // 
+            // groupBox22
+            // 
+            this.groupBox22.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox22.BackColor = System.Drawing.SystemColors.ControlText;
+            this.groupBox22.Location = new System.Drawing.Point(97, 179);
+            this.groupBox22.Name = "groupBox22";
+            this.groupBox22.Size = new System.Drawing.Size(165, 1);
+            this.groupBox22.TabIndex = 99;
+            this.groupBox22.TabStop = false;
+            // 
+            // panelContractNum
+            // 
+            this.panelContractNum.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panelContractNum.Controls.Add(this.labelContractNum);
+            this.panelContractNum.Controls.Add(this.textBoxContractNum);
+            this.panelContractNum.Location = new System.Drawing.Point(97, 159);
+            this.panelContractNum.Name = "panelContractNum";
+            this.panelContractNum.Size = new System.Drawing.Size(168, 21);
+            this.panelContractNum.TabIndex = 98;
+            this.panelContractNum.Click += new System.EventHandler(this.panel8_Click);
+            this.panelContractNum.Leave += new System.EventHandler(this.panel8_Leave);
+            // 
+            // labelContractNum
+            // 
+            this.labelContractNum.AutoSize = true;
+            this.labelContractNum.Location = new System.Drawing.Point(2, 8);
+            this.labelContractNum.Name = "labelContractNum";
+            this.labelContractNum.Size = new System.Drawing.Size(0, 12);
+            this.labelContractNum.TabIndex = 20;
+            this.labelContractNum.Visible = false;
+            // 
             // textBoxContractNum
             // 
-            this.textBoxContractNum.Location = new System.Drawing.Point(96, 158);
+            this.textBoxContractNum.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBoxContractNum.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBoxContractNum.Location = new System.Drawing.Point(0, 0);
             this.textBoxContractNum.Name = "textBoxContractNum";
-            this.textBoxContractNum.Size = new System.Drawing.Size(165, 21);
-            this.textBoxContractNum.TabIndex = 97;
+            this.textBoxContractNum.Size = new System.Drawing.Size(169, 21);
+            this.textBoxContractNum.TabIndex = 43;
+            this.textBoxContractNum.Visible = false;
+            this.textBoxContractNum.Click += new System.EventHandler(this.panel8_Click);
+            this.textBoxContractNum.Leave += new System.EventHandler(this.panel8_Leave);
             // 
             // FormPurchaseInOrder
             // 
@@ -1330,7 +1370,8 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(241)))), ((int)(((byte)(246)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1126, 562);
-            this.Controls.Add(this.textBoxContractNum);
+            this.Controls.Add(this.groupBox22);
+            this.Controls.Add(this.panelContractNum);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.panelInLedger);
             this.Controls.Add(this.panelRed);
@@ -1428,6 +1469,8 @@
             this.panelStaffVerify.PerformLayout();
             this.groupBox18.ResumeLayout(false);
             this.groupBox20.ResumeLayout(false);
+            this.panelContractNum.ResumeLayout(false);
+            this.panelContractNum.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1543,6 +1586,9 @@
         private System.Windows.Forms.Panel panelInLedger;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.GroupBox groupBox22;
+        private System.Windows.Forms.Panel panelContractNum;
+        private System.Windows.Forms.Label labelContractNum;
         private System.Windows.Forms.TextBox textBoxContractNum;
 
     }

@@ -235,6 +235,31 @@ namespace MainProgram.model
                 if (record.pkey == pkey)
                 {
                     materiel = record;
+                    break;
+                }
+            }
+
+            return materiel;
+        }
+
+        public MaterielTable getMaterielInfoFromNum(string num)
+        {
+            if (m_noForbidMaterielList.Count == 0)
+            {
+                load();
+            }
+
+            MaterielTable materiel = new MaterielTable();
+
+            foreach (KeyValuePair<int, MaterielTable> index in m_noForbidMaterielList)
+            {
+                MaterielTable record = new MaterielTable();
+                record = index.Value;
+
+                if (record.num == num)
+                {
+                    materiel = record;
+                    break;
                 }
             }
 

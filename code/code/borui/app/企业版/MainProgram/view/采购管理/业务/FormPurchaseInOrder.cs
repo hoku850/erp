@@ -96,7 +96,7 @@ namespace MainProgram
         {
             // 物料资料初始化
             m_dateGridVeiwListDataList.addDataGridViewColumn("行号", 55, true, true);
-            m_dateGridVeiwListDataList.addDataGridViewColumn("物料编码(*)", 100, true, false);
+            m_dateGridVeiwListDataList.addDataGridViewColumn("物料ID\\编码(*)", 100, true, false);
 
             if (DateGridVeiwListDataListRowCount > 12)
             {
@@ -523,7 +523,7 @@ namespace MainProgram
             record.exchangesUnit = this.labelSummary.Text;
             record.sourceBillType = this.labelSourceOrderType.Text;
             record.sourceBillNumber = this.labelSourceOrderNumber.Text;
-            record.contractNum = this.textBoxContractNum.Text;
+            record.contractNum = this.labelContractNum.Text;
 
             record.sumValue = this.dataGridViewDataCount.Rows[0].Cells[(int)DataGridColumnName.Value].Value.ToString();
             record.sumMoney = this.dataGridViewDataCount.Rows[0].Cells[(int)DataGridColumnName.Turnover].Value.ToString();
@@ -766,7 +766,7 @@ namespace MainProgram
                  * */
                 if (dataGridViewDataList.Rows[m_rowIndex].Cells[m_columnIndex].EditedFormattedValue.ToString().Length > 0)
                 {
-                    setMatetielInfoToDataGridView(Convert.ToDouble(dataGridViewDataList.Rows[m_rowIndex].Cells[m_columnIndex].EditedFormattedValue.ToString()));
+                    setMatetielInfoToDataGridView(dataGridViewDataList.Rows[m_rowIndex].Cells[m_columnIndex].EditedFormattedValue.ToString());
                 }
             }
             else if (e.ColumnIndex == (int)DataGridColumnName.Price || e.ColumnIndex == (int)DataGridColumnName.Value)
@@ -779,30 +779,40 @@ namespace MainProgram
             }
         }
         
-        private void setMatetielInfoToDataGridView(double pkey)
+        private void setMatetielInfoToDataGridView(string id)
         {
-            MaterielTable record = Materiel.getInctance().getMaterielInfoFromPkey((int)pkey);
+            double pkey = Convert.ToDouble(id.ToString());
+            //使用这个输入的值，匹配物料编号
+            MaterielTable record = Materiel.getInctance().getMaterielInfoFromNum(Convert.ToString(id));
 
-            if (pkey != record.pkey || record.pkey == 0)
+            if (id != record.num || record.pkey == 0)
             {
-                MessageBoxExtend.messageWarning("[" + dataGridViewDataList.Rows[m_rowIndex].Cells[m_columnIndex].EditedFormattedValue.ToString() +
-                    "]不存在，请重新输入或选择");
-                m_dateGridVeiwListDataList.clearDataGridViewRow(m_rowIndex);
+                //使用这个输入的值，匹配物料key
+
+                record = Materiel.getInctance().getMaterielInfoFromPkey((int)pkey);
+
+                if (pkey != record.pkey || record.pkey == 0)
+                {
+                    MessageBoxExtend.messageWarning("[" + dataGridViewDataList.Rows[m_rowIndex].Cells[m_columnIndex].EditedFormattedValue.ToString() +
+                        "]不存在，请重新输入或选择");
+                    m_dateGridVeiwListDataList.clearDataGridViewRow(m_rowIndex);
+
+                    return;
+                }
             }
-            else
-            {
-                dataGridViewDataList.Rows[m_rowIndex].Cells[(int)DataGridColumnName.MatetielName].Value = record.name;
-                dataGridViewDataList.Rows[m_rowIndex].Cells[(int)DataGridColumnName.Model].Value = record.model;
-                dataGridViewDataList.Rows[m_rowIndex].Cells[(int)DataGridColumnName.Brand].Value = record.brand;
-                dataGridViewDataList.Rows[m_rowIndex].Cells[(int)DataGridColumnName.Unit].Value =
-                    AuxiliaryMaterial.getInctance().getAuxiliaryMaterialNameFromPkey("BASE_UNIT_LIST", record.unitPurchase);
-                dataGridViewDataList.Rows[m_rowIndex].Cells[(int)DataGridColumnName.Price].Value = "0";
-                dataGridViewDataList.Rows[m_rowIndex].Cells[(int)DataGridColumnName.Value].Value = "0";
-                dataGridViewDataList.Rows[m_rowIndex].Cells[(int)DataGridColumnName.Turnover].Value = "0";
-                dataGridViewDataList.Rows[m_rowIndex].Cells[(int)DataGridColumnName.TransportationCost].Value = "0";
-                dataGridViewDataList.Rows[m_rowIndex].Cells[(int)DataGridColumnName.OtherCost].Value = "0";
-                dataGridViewDataList.Rows[m_rowIndex].Cells[(int)DataGridColumnName.SumTurnover].Value = "0";
-            }
+
+            dataGridViewDataList.Rows[m_rowIndex].Cells[(int)DataGridColumnName.MatetielNumber].Value = record.pkey;
+            dataGridViewDataList.Rows[m_rowIndex].Cells[(int)DataGridColumnName.MatetielName].Value = record.name;
+            dataGridViewDataList.Rows[m_rowIndex].Cells[(int)DataGridColumnName.Model].Value = record.model;
+            dataGridViewDataList.Rows[m_rowIndex].Cells[(int)DataGridColumnName.Brand].Value = record.brand;
+            dataGridViewDataList.Rows[m_rowIndex].Cells[(int)DataGridColumnName.Unit].Value =
+                AuxiliaryMaterial.getInctance().getAuxiliaryMaterialNameFromPkey("BASE_UNIT_LIST", record.unitPurchase);
+            dataGridViewDataList.Rows[m_rowIndex].Cells[(int)DataGridColumnName.Price].Value = "0";
+            dataGridViewDataList.Rows[m_rowIndex].Cells[(int)DataGridColumnName.Value].Value = "0";
+            dataGridViewDataList.Rows[m_rowIndex].Cells[(int)DataGridColumnName.Turnover].Value = "0";
+            dataGridViewDataList.Rows[m_rowIndex].Cells[(int)DataGridColumnName.TransportationCost].Value = "0";
+            dataGridViewDataList.Rows[m_rowIndex].Cells[(int)DataGridColumnName.OtherCost].Value = "0";
+            dataGridViewDataList.Rows[m_rowIndex].Cells[(int)DataGridColumnName.SumTurnover].Value = "0";
         }
 
         private void setTurnoverInfoDataGridView()
@@ -950,11 +960,12 @@ namespace MainProgram
             this.labelSourceOrderNumber.Visible = true;
             this.labelSave.Visible = true;
             this.labelVerify.Visible = true;
+            this.labelContractNum.Visible = true;
             
             this.labelPurchaseName.Text = m_purchaseInOrder.supplierName;
             this.labelTradingDate.Text = m_purchaseInOrder.tradingDate;
             this.labelBillNumber.Text = m_purchaseInOrder.billNumber;
-            this.textBoxContractNum.Text = m_purchaseInOrder.contractNum;
+            this.labelContractNum.Text = m_purchaseInOrder.contractNum;
             this.labelPurchaseType.Text = m_purchaseInOrder.purchaseType;
             this.labelPaymentDate.Text = m_purchaseInOrder.paymentDate;
             this.labelSummary.Text = m_purchaseInOrder.exchangesUnit;
@@ -967,6 +978,8 @@ namespace MainProgram
             this.labelSourceOrderNumber.Text = m_purchaseInOrder.sourceBillNumber;
             this.labelSave.Text = m_purchaseInOrder.staffSaveName;
             this.labelVerify.Text = m_purchaseInOrder.staffCheckName;
+            this.labelContractNum.Text = m_purchaseInOrder.contractNum;
+            
 
             // DataGridView 赋值
             SortedDictionary<int, PurchaseInOrderDetailsTable> purchaseOrderDetails = 
@@ -1034,8 +1047,6 @@ namespace MainProgram
                 this.registerInLedger.Enabled = false;
                 this.dataGridViewDataList.ReadOnly = true;
                 this.dataGridViewDataCount.ReadOnly = true;
-
-                this.textBoxContractNum.Enabled = false;
             }
             else
             {
@@ -1098,6 +1109,27 @@ namespace MainProgram
                         ((System.Reflection.MemberInfo)(activeObject.GetType())).Name.ToString(), isEnable);
                 }
             }
+        }
+
+        private void panel8_Click(object sender, EventArgs e)
+        {
+            if (m_purchaseInOrder.isReview == "1")
+            {
+                return;
+            }
+
+            this.labelContractNum.Visible = false;
+            this.textBoxContractNum.Visible = true;
+
+            this.textBoxContractNum.Text = this.labelContractNum.Text;
+            this.textBoxContractNum.Focus();
+        }
+
+        private void panel8_Leave(object sender, EventArgs e)
+        {
+            this.textBoxContractNum.Visible = false;
+            this.labelContractNum.Text = this.textBoxContractNum.Text.ToString();
+            this.labelContractNum.Visible = this.textBoxContractNum.Text.Length > 0;
         }
     }
 }
